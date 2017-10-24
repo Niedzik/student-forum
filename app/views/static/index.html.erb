@@ -1,0 +1,46 @@
+<h1>Strona główna</h1>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<%= Time.now %> </br>
+<%= @some_variable %> </br>
+<%= @students.first %>
+
+<hr>
+
+<h2>Wszyscy studenci</h2>
+<ul>
+<% @students.each do |student| %>
+  <li><%= student.name %></li>
+<% end %>
+</ul>
+
+ </br>
+
+<ul>
+<% @students.each do |student| %>
+  <%= link_to student do %>
+    <li><%= student.name %> <%= student.index %></li>
+  <% end %>
+<% end %>
+</ul> </br>
+
+<h2>Wszystkie posty</h2>
+<% @courses.each do |course| %>
+  <h3><%= course.name %></h3>
+  <% course.topics.each do |topic| %>
+    <h4><%= topic.title %> by <%= topic.student.name %></h4>
+    <% topic.posts.each do |post| %>
+      <p>
+        <%= post.body %>
+      </p>
+      <h6>by <%= post.student.name %></h6>
+    <% end %>
+  <% end %>
+<% end %>
